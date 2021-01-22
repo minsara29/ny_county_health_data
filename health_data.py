@@ -44,7 +44,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         raise ValueError('County Parameters is missing ......')
     elif len(sys.argv) > 2:
-        target_county = sys.argv[1] + sys.argv[2]
+        target_county = " ".join(sys.argv[1:])
     else:
         target_county = sys.argv[1]
 
@@ -60,9 +60,3 @@ if __name__ == '__main__':
     db.insert_data(target_county, county_data)
     values = db.select_data(target_county)
     print(values)
-
-
-
-
-
-
