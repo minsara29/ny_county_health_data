@@ -41,7 +41,9 @@ class SqliteDb:
 
     def create_table(self, county):
         """ Create a County table. """
+        county = str(county).replace(".", "").replace(" ", "_")
         create_table = TABLE_CREATE_STATEMENT + county + TABLE_COLUMNS_STATEMENT
+
         try:
             return self.db.execute(create_table)
         except sqlite3.Error as e:
@@ -50,6 +52,7 @@ class SqliteDb:
 
     def insert_data(self, county, values):
         """ Insert values into County table. """
+        county = str(county).replace(".", "").replace(" ", "_")
         insert_query = TABLE_INSERT_STATEMENT + county + TABLE_COLUMNS_VALUES
         cur = self.db.cursor()
         try:
@@ -63,6 +66,7 @@ class SqliteDb:
 
     def select_data(self, county):
         """ select rows from County table. """
+        county = str(county).replace(".", "").replace(" ", "_")
         select_query = f"select * from {county}"
         cur = self.db.cursor()
         try:
@@ -71,8 +75,3 @@ class SqliteDb:
         except sqlite3.Error as e:
             print(f"Error while selecting {county} table: {e}")
             raise SystemExit(e)
-
-
-
-
-
