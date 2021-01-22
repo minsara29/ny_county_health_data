@@ -39,6 +39,18 @@ pip install apache-airflow
 
 # database_script.py
   - Sqlite database modules - Utilize SQLite in memory database for data storage
+  
+  Each county table contain following columns :
+      test_date	                     floating_timestamp	
+      county 		                     text					
+      new_positives 				         number				
+      cumulative_number_of_positives number				
+      total_number_of_tests 		     number				
+      cumulative_number_of_tests     number		
+      Load_date                      date default CURRENT_DATE
+      
+
+
 
 # nw_county_covid_dag.py
   - airflow Dag file. Scheduled daily that would run at 9:00 AM and ingest the data into the system
